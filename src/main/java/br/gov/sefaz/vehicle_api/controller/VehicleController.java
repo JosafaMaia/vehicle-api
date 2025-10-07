@@ -44,28 +44,4 @@ public class VehicleController {
 
         return ResponseEntity.ok(Map.of("vehicles", vehicles));
     }
-
-    // Busca direta por RENAVAM
-    @GetMapping("/renavam/{renavam}")
-    public ResponseEntity<?> getByRenavam(@PathVariable String renavam) {
-        List<Vehicle> vehicles = vehicleService.findVehicleByFilter(null, renavam, null);
-        if (vehicles.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(Map.of("vehicles", vehicles));
-    }
-
-    // Busca direta por PLACA
-    @GetMapping("/plate/{plate}")
-    public ResponseEntity<?> getByPlate(@PathVariable String plate) {
-        List<Vehicle> vehicles = vehicleService.findVehicleByFilter(plate, null, null);
-        if (vehicles.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(Map.of("vehicles", vehicles));
-    }
-
-    // Busca direta por CHASSI
-    @GetMapping("/chassi/{chassi}")
-    public ResponseEntity<?> getByChassi(@PathVariable String chassi) {
-        List<Vehicle> vehicles = vehicleService.findVehicleByFilter(null, null, chassi);
-        if (vehicles.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(Map.of("vehicles", vehicles));
-    }
 }
